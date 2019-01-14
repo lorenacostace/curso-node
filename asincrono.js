@@ -12,6 +12,7 @@ function escribeTras2Segundos(texto, callback) {
     }, 2000);
 }
 
+// Llamada a la funcion
 escribeTras2Segundos('texto1', function () {
     console.log('Fin1');   // Al ponerlo aqui consigo que se muestre despues del texto
 

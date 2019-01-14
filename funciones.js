@@ -66,6 +66,7 @@ function Fruta(nombre) {
 }
 
 // creamos el objeto fruta
+
 var limon = new Fruta('Citrus limon');
 
 console.log(limon);

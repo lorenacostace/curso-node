@@ -17,7 +17,7 @@ console.log(persona.name);
 persona.saluda();
 
 
-// ---------- HEREDANDO DE PERSONA -----------------
+// ----------------------- HEREDANDO DE PERSONA -----------------------
 
 // Creamos un constructor de agentes
 function Agente(nombre) {
@@ -40,3 +40,22 @@ console.log(
     agente instanceof Persona,
     agente instanceof Object
 );
+
+
+// ----------------------- HERENCIA MULTIPLE -----------------------
+
+//Constructor de superheroes
+function SuperHeroe() {
+    this.vuela = function () {
+        console.log(this.name + ' vuela');
+    };
+    this.esquivaBalas = function () {
+        console.log(this.name + ' esquiva balas');
+    }
+}
+
+// nuestro agente, ademas de heredar de una persona, vamos a hacer que herede de SuperHeroe
+Object.assign(Agente.prototype, new SuperHeroe());
+
+agente.vuela();
+agente.esquivaBalas();

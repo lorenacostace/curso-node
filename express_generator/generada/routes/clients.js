@@ -3,11 +3,13 @@
 var express = require('express');
 var router = express.Router();
 
+/*
 router.use(function (req, res, next) {
    console.log('middleware de router clientes');
    res.send('respuesta');
    next();
 });
+*/
 
 // Cargamos una ruta al router. Todas las peticiones a la ruta /, van a ejecutar este middleware.
 router.get('/', function (req, res, next) {

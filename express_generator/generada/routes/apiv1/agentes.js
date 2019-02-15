@@ -8,6 +8,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Agente = mongoose.model('Agente');
 
+
+//Recuperar lista de agentes
 router.get('/', function (req, res, next) {
    Agente.find().exec(function (err, list) {
        if(err){
@@ -19,6 +21,15 @@ router.get('/', function (req, res, next) {
    });
 });
 
+
+//Crear un agente
+router.post('/', function (req, res, next) {
+    console.log(req.body);
+});
+
+// Actualizar un agente. Recibimos el agente en el cuerpo de la peticion, por eso usamos body
+
+// Eliminar un agente
 
 // Exportamos para poder cargar en nuestro router de app.js
 module.exports = router;

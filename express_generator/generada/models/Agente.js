@@ -9,7 +9,14 @@ var agenteSchema = mongoose.Schema({
 });
 
 
+agenteSchema.statics.list = function(filter, cb){
+    var query = Agente.find(filter);
+
+    query.exec(cb);
+};
+
+
 // Creamos el modelo con model y ponemos el nombre y el esquema que tiene que utilizar.
-mongoose.model('Agente', agenteSchema);
+var Agente = mongoose.model('Agente', agenteSchema);
 
 

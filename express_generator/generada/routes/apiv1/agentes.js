@@ -11,7 +11,22 @@ var Agente = mongoose.model('Agente');
 
 //Recuperar lista de agentes
 router.get('/', function (req, res, next) {
-   Agente.find().exec(function (err, list) {
+
+    var name = req.query.name;
+    var age = req.query.age;
+
+    var filter = {};
+
+    if(name){
+        filter.name = name;
+    }
+
+    // Se debe poner el typeof porque si nos da 0 una edad, evaluaria a falso, nunca se cumpliria y node devolveria todos
+    if(typeof age !== 'undefined'){
+        filter.age = age;
+    }
+
+   Agente.list(filter, function (err, list) {
        if(err){
            next(); // Utilizamos next para que se ocupe el middleware que hay en app.js
            return;
@@ -66,6 +81,7 @@ router.delete('/:id', function (req, res, next) {
         res.json({ok: true, result: result});
     });
 });
+
 
 // Exportamos para poder cargar en nuestro router de app.js
 module.exports = router;

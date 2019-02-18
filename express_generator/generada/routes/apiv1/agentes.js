@@ -15,6 +15,19 @@ router.get('/', function (req, res, next) {
     var name = req.query.name;
     var age = req.query.age;
 
+    // Para limitar el numero de consultas devueltas. Creamos la variable y guardamos el contenido de la query o en caso
+    // de no haber nada, guarda null
+    var limit = parseInt(req.query.limit) || null;
+
+    // Para saltar un numero de consultas.
+    var skip = parseInt(req.query.skip) || null;
+
+    // Para conseguir los campos que pide la consulta
+    var fields = req.query.fields || null;
+
+    // Para ordenar
+    var sort = req.query.sort || null;
+
     var filter = {};
 
     if(name){
@@ -26,7 +39,7 @@ router.get('/', function (req, res, next) {
         filter.age = age;
     }
 
-   Agente.list(filter, function (err, list) {
+   Agente.list(filter, limit, skip, fields, sort, function (err, list) {
        if(err){
            next(); // Utilizamos next para que se ocupe el middleware que hay en app.js
            return;
